@@ -1366,7 +1366,34 @@ int closedir(DIR *dirp);
 
 Закрывает поток, освобождая занимаемые им ресурсы.
 
-### 5.5.2. Рекурсивный обход дерева каталогов: `nftw()`
+### 5.5.2. Обход дерева каталогов: `nftw()`
+
+```C
+int nftw(
+    const char *dirpath,
+    NFTW_FUNC func,
+    int nopenfd,
+    int flags);
+
+typedef int (*NFTW_FUNC) (
+    const char *pathname,
+    const struct stat *statbuf,
+    int typeflag,
+    struct FTW *ftwbuf);
+
+struct FTW
+{
+    int base;
+    int level;
+}
+```
+
+Выполняет обход дерева каталога `dirpath` и вызывает указанную функцию `func` для каждой записи в дереве. Обход выполняется в несортированном порядке, причем сначала обходится сам каталог, а затем его дочерние подкаталоги.
+
+Аргумент `nopenfd` 
+
+
+
 
 
 
