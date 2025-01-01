@@ -1,6 +1,6 @@
 # 1. Введение
 
-Под термином **операционная система** скрывается 2 определения:
+Под термином **операционная система** скрываются 2 определения:
 
 + *в широком смысле* - весь пакет программ, включающий как функционал по управлению ресурсами компьютера, так и сопроводительные стандартные средства: интерпретатор командной строки, графический интерфейс, утилиты и редакторы;
 + *в узком смысле* - только набор основных модулей, управляющих ресурсами компьютера (оперативная память, хранилища, сеть, процессорное время) и занимающихся их распределением.
@@ -86,7 +86,7 @@ Linux является *многопользовательской* операц
 Одна запись файла паролей `/etc/passwd` представляется следующей структурой (поля приводятся в порядке следования их описаний выше):
 
 ```C
-struct passwd 
+struct passwd
 {
     char *pw_name;
     char *pw_passwd;
@@ -320,8 +320,8 @@ Linux предоставляет **универсальную модель вв�
 
 ```C
 int open(
-    const char *pathname, 
-    int flags, ... 
+    const char *pathname,
+    int flags, ...
     /* mode_t mode */);
 ```
 
@@ -358,8 +358,8 @@ int open(
 
 ```C
 ssize_t read(
-    int fd, 
-    void *buffer, 
+    int fd,
+    void *buffer,
     size_t count);
 ```
 
@@ -369,8 +369,8 @@ ssize_t read(
 
 ```C
 ssize_t write(
-    int fd, 
-    const void *buffer, 
+    int fd,
+    const void *buffer,
     size_t count);
 ```
 
@@ -432,15 +432,15 @@ int ioctl(int fd, int request, ... /* argp */);
 
 ```C
 ssize_t pread(
-    int fd, 
-    void *buf, 
-    size_t count, 
+    int fd,
+    void *buf,
+    size_t count,
     off_t offset);
 
 ssize_t pwrite(
-    int fd, 
-    const void *buf, 
-    size_t count, 
+    int fd,
+    const void *buf,
+    size_t count,
     off_t offset);
 ```
 
@@ -450,13 +450,13 @@ ssize_t pwrite(
 
 ```C
 ssize_t readv(
-    int fd, 
-    const struct iovec *iov, 
+    int fd,
+    const struct iovec *iov,
     int iovcnt);
 
 ssize_t writev(
-    int fd, 
-    const struct iovec *iov, 
+    int fd,
+    const struct iovec *iov,
     int iovcnt);
 ```
 
@@ -466,15 +466,15 @@ ssize_t writev(
 
 ```C
 ssize_t preadv(
-    int fd, 
-    const struct iovec *iov, 
-    int iovcnt, 
+    int fd,
+    const struct iovec *iov,
+    int iovcnt,
     off_t offset);
 
 ssize_t pwritev(
-    int fd, 
-    const struct iovec *iov, 
-    int iovcnt, 
+    int fd,
+    const struct iovec *iov,
+    int iovcnt,
     off_t offset);
 ```
 
@@ -556,9 +556,9 @@ FILE *fdopen(int fd, const char *mode);
 
 ```C
 int setvbuf(
-    FILE *stream, 
-    char *buf, 
-    int mode, 
+    FILE *stream,
+    char *buf,
+    int mode,
     size_t size);
 ```
 
@@ -574,12 +574,12 @@ int setvbuf(
 
 ```C
 void setbuf(
-    FILE *stream, 
+    FILE *stream,
     char *buf);
 
 void setbuffer(
-    FILE *stream, 
-    char *buf, 
+    FILE *stream,
+    char *buf,
     size_t size);
 ```
 
@@ -645,9 +645,9 @@ void sync(void);
 
 ```C
 int posix_fadvise(
-    int fd, 
-    off_t offset, 
-    off_t len, 
+    int fd,
+    off_t offset,
+    off_t len,
     int advice);
 ```
 
@@ -756,10 +756,10 @@ Linux подразделяет все подключенные к системе
 
 ```C
 int mount(
-    const char *source, 
-    const char *target, 
+    const char *source,
+    const char *target,
     const char *fstype,
-    unsigned long mountflags, 
+    unsigned long mountflags,
     const void *data);
 ```
 
@@ -818,14 +818,14 @@ int umount2(const char *target, int flags);
 
 ```C
 int statvfs(
-    const char *pathname, 
+    const char *pathname,
     struct statvfs *statvfsbuf);
 
 int fstatvfs(
-    int fd, 
+    int fd,
     struct statvfs *statvfsbuf);
 
-struct statvfs 
+struct statvfs
 {
     unsigned long f_bsize;
     unsigned long f_frsize;
@@ -934,18 +934,18 @@ struct utsname
 
 ```C
 int chown(
-    const char *pathname, 
-    uid_t owner, 
+    const char *pathname,
+    uid_t owner,
     gid_t group);
 
 int lchown(
-    const char *pathname, 
-    uid_t owner, 
+    const char *pathname,
+    uid_t owner,
     gid_t group);
 
 int fchown(
-    int fd, 
-    uid_t owner, 
+    int fd,
+    uid_t owner,
     gid_t group);
 ```
 
@@ -1050,10 +1050,10 @@ int access(const char *pathname, int mode);
 
 ```C
 int utime(
-    const char *pathname, 
+    const char *pathname,
     const struct utimbuf *buf);
 
-struct utimbuf 
+struct utimbuf
 {
     time_t actime;
     time_t modtime;
@@ -1075,22 +1075,22 @@ struct utimbuf
 
 ```C
 int utimes(
-    const char *pathname, 
+    const char *pathname,
     const struct timeval tv[2]);
 
 int lutimes(
-    const char *pathname, 
+    const char *pathname,
     const struct timeval tv[2]);
 
 int futimes(
-    int fd, 
+    int fd,
     const struct timeval tv[2]);
 
 struct timeval
 {
     time_t tv_sec;
     suseconds_t tv_usec;
-};    
+};
 ```
 
 Устанавливают время последнего доступа и последнего изменения данных с *микросекундной точностью*. Время последнего изменения индексного дескриптора автоматически устанавливается в текущее время системы.
@@ -1109,16 +1109,16 @@ struct timeval
 
 ```C
 int utimensat(
-    int dirfd, 
+    int dirfd,
     const char *pathname,
-    const struct timespec times[2], 
+    const struct timespec times[2],
     int flags);
 
 int futimens(
-    int fd, 
+    int fd,
     const struct timespec times[2]);
 
-struct timespec 
+struct timespec
 {
     time_t tv_sec;
     long tv_nsec;
@@ -1142,15 +1142,15 @@ struct timespec
 
 ```C
 int stat(
-    const char *pathname, 
+    const char *pathname,
     struct stat *statbuf);
 
 int lstat(
-    const char *pathname, 
+    const char *pathname,
     struct stat *statbuf);
 
 int fstat(
-    int fd, 
+    int fd,
     struct stat *statbuf);
 
 struct stat
@@ -1185,7 +1185,7 @@ struct stat
 + `st_mode` - битовая маска содержащая *тип файла* и *права доступа* к нему;
 
     ![сегменты памяти процесса](images/img-12.png)
-  
+
     *Тип файла* извлекается маской `S_IFMT` и сравнивается со значением константы, либо ко всей маске целиком применяется соответствующий макрос:
 
     | Константа | Макрос     | Тип файла             |
@@ -1337,7 +1337,7 @@ int chroot(const char *pathname);
 
 ```C
 char *realpath(
-    const char *pathname, 
+    const char *pathname,
     char *resolved_path);
 ```
 
@@ -1500,7 +1500,7 @@ struct FTW
 
 ```C
 int link(
-    const char *oldpath, 
+    const char *oldpath,
     const char *newpath);
 ```
 
@@ -1518,7 +1518,7 @@ int unlink(const char *pathname);
 
 ```C
 int rename(
-    const char *oldpath, 
+    const char *oldpath,
     const char *newpath);
 ```
 
@@ -1551,7 +1551,7 @@ int rename(
 
 ```C
 int symlink(
-    const char *linkpath, 
+    const char *linkpath,
     const char *linkpath);
 ```
 
@@ -1561,8 +1561,8 @@ int symlink(
 
 ```C
 ssize_t readlink(
-    const char *pathname, 
-    char *buffer, 
+    const char *pathname,
+    char *buffer,
     size_t bufsiz);
 ```
 
@@ -1602,24 +1602,24 @@ ssize_t readlink(
 
 ```C
 int setxattr(
-    const char *pathname, 
-    const char *name, 
+    const char *pathname,
+    const char *name,
     const void *value,
-    size_t size, 
+    size_t size,
     int flags);
 
 int lsetxattr(
-    const char *pathname, 
-    const char *name, 
+    const char *pathname,
+    const char *name,
     const void *value,
-    size_t size, 
+    size_t size,
     int flags);
 
 int fsetxattr(
-    int fd, 
-    const char *name, 
+    int fd,
+    const char *name,
     const void *value,
-    size_t size, 
+    size_t size,
     int flags);
 ```
 
@@ -1629,20 +1629,20 @@ int fsetxattr(
 
 ```C
 ssize_t getxattr(
-    const char *pathname, 
-    const char *name, 
+    const char *pathname,
+    const char *name,
     void *value,
     size_t size);
 
 ssize_t lgetxattr(
-    const char *pathname, 
-    const char *name, 
+    const char *pathname,
+    const char *name,
     void *value,
     size_t size);
 
 ssize_t fgetxattr(
-    int fd, 
-    const char *name, 
+    int fd,
+    const char *name,
     void *value,
     size_t size);
 ```
@@ -1653,15 +1653,15 @@ ssize_t fgetxattr(
 
 ```C
 int removexattr(
-    const char *pathname, 
+    const char *pathname,
     const char *name);
 
 int lremovexattr(
-    const char *pathname, 
+    const char *pathname,
     const char *name);
 
 int fremovexattr(
-    int fd, 
+    int fd,
     const char *name);
 ```
 
@@ -1671,18 +1671,18 @@ int fremovexattr(
 
 ```C
 ssize_t listxattr(
-    const char *pathname, 
-    char *list, 
+    const char *pathname,
+    char *list,
     size_t size);
 
 ssize_t llistxattr(
-    const char *pathname, 
-    char *list, 
+    const char *pathname,
+    char *list,
     size_t size);
 
 ssize_t flistxattr(
-    int fd, 
-    char *list, 
+    int fd,
+    char *list,
     size_t size);
 ```
 
@@ -1877,8 +1877,8 @@ int inotify_init(void);
 
 ```C
 int inotify_add_watch(
-    int fd, 
-    const char *pathname, 
+    int fd,
+    const char *pathname,
     uint32_t mask);
 ```
 
@@ -2042,13 +2042,13 @@ gid_t getegid(void);
 
 ```C
 int getresuid(
-    uid_t *ruid, 
-    uid_t *euid, 
+    uid_t *ruid,
+    uid_t *euid,
     uid_t *suid);
 
 int getresgid(
-    gid_t *rgid, 
-    gid_t *egid, 
+    gid_t *rgid,
+    gid_t *egid,
     gid_t *sgid);
 ```
 
@@ -2099,13 +2099,13 @@ int setregid(gid_t rgid, gid_t egid);
 
 ```C
 int setresuid(
-    uid_t ruid, 
-    uid_t euid, 
+    uid_t ruid,
+    uid_t euid,
     uid_t suid);
 
 int setresgid(
-    gid_t rgid, 
-    gid_t egid, 
+    gid_t rgid,
+    gid_t egid,
     gid_t sgid);
 ```
 
@@ -2132,7 +2132,7 @@ int setfsgid(gid_t fsgid);
 
 ```C
 int getgroups(
-    int gidsetsize, 
+    int gidsetsize,
     gid_t grouplist[]);
 ```
 
@@ -2142,7 +2142,7 @@ int getgroups(
 
 ```C
 int setgroups(
-    size_t gidsetsize, 
+    size_t gidsetsize,
     const gid_t *grouplist);
 ```
 
@@ -2325,12 +2325,12 @@ void *realloc(void *ptr, size_t size);
 
 ```C
 void *memalign(
-    size_t boundary, 
+    size_t boundary,
     size_t size);
 
 int posix_memalign(
-    void **memptr, 
-    size_t alignment, 
+    void **memptr,
+    size_t alignment,
     size_t size);
 ```
 
@@ -2381,8 +2381,8 @@ int putenv(char *str);
 
 ```C
 int setenv(
-    const char *name, 
-    const char *value, 
+    const char *name,
+    const char *value,
     int overwrite);
 ```
 
@@ -2515,8 +2515,8 @@ int sigdelset(sigset_t *set, int sig);
 
 ```C
 int sigandset(
-    sigset_t *set, 
-    sigset_t *left, 
+    sigset_t *set,
+    sigset_t *left,
     sigset_t *right);
 ```
 
@@ -2524,8 +2524,8 @@ int sigandset(
 
 ```C
 int sigorset(
-    sigset_t *set, 
-    sigset_t *left, 
+    sigset_t *set,
+    sigset_t *left,
     sigset_t *right);
 ```
 
@@ -2605,8 +2605,8 @@ int killpg(pid_t pgrp, int sig);
 
 ```C
 int sigprogmask(
-    int how, 
-    const sigset_t *set, 
+    int how,
+    const sigset_t *set,
     sigset_t *oldset);
 ```
 
@@ -2675,7 +2675,7 @@ int pause();
 typedef void(*sighandler_t)(int);
 
 sighandler_t signal(
-    int sig, 
+    int sig,
     sighandler_t handler);
 ```
 
@@ -2701,8 +2701,8 @@ struct sigaction
 };
 
 int sigaction(
-    int sig, 
-    const struct sigaction *act, 
+    int sig,
+    const struct sigaction *act,
     struct sigaction *oldact);
 ```
 
@@ -2789,7 +2789,7 @@ struct timeval
 
 ```C
 int gettimeofday(
-    struct timeval *tv, 
+    struct timeval *tv,
     struct timezone *tz);
 ```
 
@@ -2801,7 +2801,7 @@ int gettimeofday(
 
 ```C
 int settimeofday(
-    const struct timeval *tv, 
+    const struct timeval *tv,
     const struct timezone *tz);
 ```
 
@@ -2813,7 +2813,7 @@ int settimeofday(
 
 ```C
 int adjtime(
-    struct timeval *delta, 
+    struct timeval *delta,
     struct timeval *olddelta);
 ```
 
@@ -2914,8 +2914,8 @@ char *asctime(const struct tm *timeptr);
 
 ```C
 size_t strftime(
-    char *outstr, 
-    size_t maxsize, 
+    char *outstr,
+    size_t maxsize,
     const char *format,
     const struct tm *timeptr);
 ```
@@ -2926,8 +2926,8 @@ size_t strftime(
 
 ```C
 char *strptime(
-    const char *str, 
-    const char *format, 
+    const char *str,
+    const char *format,
     struct tm *timeptr);
 ```
 
@@ -2944,7 +2944,7 @@ char *strptime(
     Содержит относительное путевое имя файла часового пояса `tzfile` в каталоге `zoneinfo`. Пример:
 
     `$ TZ=":Europe/Berlin"`
-  
+
 + `std offset [ dst [ offset ][ , start-date [ /time ] , end-date [ /time ]]]`
 
     Содержит следующий набор полей:
@@ -2987,7 +2987,7 @@ void tzset(void);
 ```C
 clock_t times(struct tms *buf);
 
-struct tms 
+struct tms
 {
     clock_t tms_utime;
     clock_t tms_stime;
