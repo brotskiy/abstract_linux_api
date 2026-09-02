@@ -5253,7 +5253,7 @@ void psiginfo(const siginfo_t* siginfo, const char *msg);
 
 Выводит в *стандартное устройство ошибок* `stderr` сообщение `msg`, сопровождаемое описанием сигнала из структуры `siginfo`.
 
-# 11. IPC: каналы pipes и очедери fifo
+# 11. IPC: каналы pipe и очереди fifo
 
 ## 11.1. Pipe
 
